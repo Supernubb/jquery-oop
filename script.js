@@ -150,11 +150,117 @@
 //   }
 // }
 
-$(() => {
-  // const objForm1 = new form1("Доброе утро");
-  // objForm1.HelloFIO;
-  // objForm1.HelloFIO = "Добрый день";
-  // objForm1._privateMethod();
+// $(() => {
+//   // const objForm1 = new form1("Доброе утро");
+//   // objForm1.HelloFIO;
+//   // objForm1.HelloFIO = "Добрый день";
+//   // objForm1._privateMethod();
+// });
 
-  
+$(() => {
+  // // разворачиватель обработчик
+  // const expanderClickHandler = (thisExpander) => {
+  //   // инициализируем настройки разворачивателя
+  //   const expander = $(thisExpander);
+  //   const target = expander.attr(`expander--target-attr`);
+  //   const id = expander.attr(`expander--target-id`);
+  //   // инициализируем кнопки свернуть/развернуть
+  //   const btnExpand = expander.find(`[expander__btn--expand]`);
+  //   const btnCollapse = expander.find(`[expander__btn--collapse]`);
+  //   // инициализируем треугольник
+  //   const triangle = expander.find(`.elem-triangle`);
+
+  //   // поворачиваем треугольник
+  //   if (triangle.length) {
+  //     triangle.toggleClass(`elem-triangle--active`);
+  //   }
+
+  //   // разворачиваем таргет(ы)
+  //   if (target.length) {
+  //     $(`[${target}=${id}]`).slideToggle();
+  //   }
+
+  //   // кнопки свернуть/развернуть
+  //   if (btnCollapse.css(`display`) === `none`) {
+  //     btnExpand.fadeToggle(200, () => {
+  //       btnCollapse.fadeToggle(200);
+  //     });
+  //   } else {
+  //     btnCollapse.fadeToggle(200, () => {
+  //       btnExpand.fadeToggle(200);
+  //     });
+  //   }
+  // };
+
+  // // клик по разворачивателю
+  // $(`[expander--target-attr]`).on(`click`, function () {
+  //   expanderClickHandler(this);
+  // });
+
+  class expanderSlide {
+    constructor(expander) {
+      this.expander = $(expander);
+      this.target = this.expander.attr(`expander--target-attr`);
+      this.id = this.expander.attr(`expander--target-id`);
+      this.btnExpand = this.expander.find(`[expander__btn--expand]`);
+      this.btnCollapse = this.expander.find(`[expander__btn--collapse]`);
+      this.triangle = this.expander.find(`.elem-triangle`);
+    }
+
+    toggle() {
+      if (this.target.length) {
+        $(`[${this.target}=${this.id}]`).slideToggle();
+      }
+
+      if (this.btnCollapse.css(`display`) === `none`) {
+        this.btnExpand.fadeToggle(200, () => {
+          this.btnCollapse.fadeToggle(200);
+        });
+      } else {
+        this.btnCollapse.fadeToggle(200, () => {
+          this.btnExpand.fadeToggle(200);
+        });
+      }
+
+      if (this.triangle.length) {
+        this.triangle.toggleClass(`elem-triangle--active`);
+      }
+    }
+
+    init() {
+      this.expander.on(`click`, () => {
+        this.toggle();
+      });
+    }
+
+    static initAll() {
+      $(`[expander--target-attr]`).each((index, el) => {
+        new expanderSlide(el).init();
+      });
+    }
+
+    static destroyAll() {
+      $(`[expander--target-attr]`).each((index, el) => {
+        new expanderSlide(el).expander.off(`click`);
+      });
+    }
+
+    static destroy(expander) {
+      new expanderSlide(expander).expander.off(`click`);
+    }
+
+    static toggle(expander) {
+      new expanderSlide(expander).toggle();
+    }
+
+    static toggleAll() {
+      $(`[expander--target-attr]`).each((index, el) => {
+        new expanderSlide(el).toggle();
+      });
+    }
+  }
+
+  expanderSlide.initAll();
+
+  // expanderSlide.destroyAll();
 });
