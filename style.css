@@ -1,0 +1,115 @@
+/*
+* Оформление формы
+*/
+
+#tab_form,
+.registrity {
+  border: 0;
+  width: 420px;
+  margin: 0 auto;
+}
+
+#tab_form .td_left {
+  color: #333399;
+  padding-left: 0.5em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-right: 0.5em;
+  text-align: right;
+  vertical-align: center;
+}
+
+#tab_form .td_right {
+  padding-left: 0.5em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-right: 0.1em;
+  text-align: left;
+}
+#tab_form th {
+  height: 50px;
+  color: #333399;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 16px;
+  border-bottom: 1px solid #9999cc;
+}
+
+#bt_send,
+#bt_cleen {
+  margin-right: 5px;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #333399;
+  border: 1px solid #666699;
+  height: 26px;
+  border-radius: 4px;
+}
+.f_form1 {
+  border: 1px solid #666699;
+  background-color: #ccccff;
+}
+#tab_form .top_pos {
+  padding-top: 20px;
+}
+
+#about {
+  width: 250px;
+  min-height: 72px;
+  line-height: 72px;
+  height: 72px;
+  padding: 0 10px;
+}
+
+#birthdate {
+  color: #666666;
+  min-height: 20px;
+  line-height: 25px;
+  height: 25px;
+  padding: 0 10px;
+}
+
+#tab_form .t_sex {
+  color: #666666;
+  margin-bottom: 8px;
+  margin-left: 3px;
+}
+
+#tab_form input,
+textarea {
+  border: 1px solid #666699;
+}
+
+#tab_form input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 250px;
+  min-height: 20px;
+  line-height: 25px;
+  height: 25px;
+  padding: 0 10px;
+}
+
+#tab_form input[type="password"]::-webkit-input-placeholder {
+  transform: translate3d(0, 3px, 0);
+  font-size: 15px;
+}
+
+#s_w,
+#s_m {
+  border: 1px solid #666699;
+}
+
+#data_submit {
+  width: 400px;
+  margin: 0 auto;
+  border: 1px solid #666699;
+  margin-top: 40px;
+  padding-left: 5px;
+}
+
+.result_submit {
+  color: #333399;
+  font-weight: bold;
+}
